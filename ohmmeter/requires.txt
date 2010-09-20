@@ -1,9 +1,0 @@
-
-Requirements
-------------
-
-OhmMeter requires such Debian/Ubuntu packages:
-
- * PyGTK (python-gtk2)
- * WebKit (python-webkit)
- * python-odesk (should be installed via pip)
