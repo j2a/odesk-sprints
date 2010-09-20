@@ -1,0 +1,5 @@
+[odesk-auth]
+public_key = obtain-in-your-api-center
+secret_key = obtain-in-your-api-center
+token = run-obtain-token
+
