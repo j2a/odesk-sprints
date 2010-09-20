@@ -35,3 +35,9 @@ Obtain token:
  5. If all is going smooth, token should appear in creds.ini.
 
 Run the "climeter.py" and you'll see how many hours you worked today :)
+
+Usage
+-----
+
+Run `ohmmeter` and see icon with magnifying glass, place your cursor on it and
+tooltip show your today workload.
