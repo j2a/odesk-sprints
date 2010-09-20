@@ -1,5 +1,5 @@
 *pyc
 .installed.cfg
-ohmmeter-auth/bin
-ohmmeter-auth/etc
-ohmmeter-auth/var
+odesk-auth-proxy/bin
+odesk-auth-proxy/etc
+odesk-auth-proxy/var
