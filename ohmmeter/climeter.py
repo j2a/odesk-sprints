@@ -15,6 +15,9 @@ class Time(object):
     def __repr__(self):
         return '<Time: %s>' % self.__str__()
 
+    def __nonzero__(self):
+        return self.hours > 0 or self.minutes > 0
+
     @classmethod
     def from_hours(cls, value):
         value = float(value)
