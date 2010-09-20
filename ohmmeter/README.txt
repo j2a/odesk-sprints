@@ -32,7 +32,6 @@ Obtain token:
  2. Fill in the values for public and secret keys from step #9 of "Prepare oDesk API keys"
  3. Run obtain_token.py
  4. Sign in into odesk and allow access to your account for your app from step #2 of "Prepare oDesk API keys"
- 5. IF all is going smooth, you should see token
- 6. Copy it to "token" parameter of creds.ini
+ 5. If all is going smooth, token should appear in creds.ini.
 
 Run the "climeter.py" and you'll see how many hours you worked today :)
