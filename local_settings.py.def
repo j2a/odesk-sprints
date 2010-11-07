@@ -1,0 +1,21 @@
+from basetrack.settings import *
+
+DEBUG = True
+
+ADMINS = MANAGERS = (
+    ('OVERRIDE ME IN LOCAL SETTINGS', 'email@address.domain'),
+)
+
+
+EMAIL_FROM = SERVER_EMAIL = 'noreply@odeskps.com'
+
+INSTALLED_APPS += (
+    'django_extensions',
+    'south',
+)
+
+#
+# oDesk API
+#
+ODESK_PUBLIC_KEY = 'FILL ME'
+ODESK_PRIVATE_KEY = 'FILL ME'
