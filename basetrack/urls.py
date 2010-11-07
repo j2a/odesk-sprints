@@ -10,7 +10,7 @@ def root(request):
 
     if request.user.is_authenticated():
         return HttpResponseRedirect(
-            reverse('index'))
+            reverse('track_tasks_list'))
     else:
         return HttpResponseRedirect(
             reverse('django_odesk.auth.views.authenticate'))
@@ -19,6 +19,7 @@ def root(request):
 urlpatterns = patterns(
     '',
     url(r'^$', root, name='root'),
+    url(r'^track/', include('basetrack.track.urls')),
     url(r'^odesk-auth/', include('django_odesk.auth.urls')),
     url(r'^manage/', include(admin.site.urls)),
 )

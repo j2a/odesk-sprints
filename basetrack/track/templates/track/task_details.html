@@ -1,0 +1,11 @@
+<html>
+    <body>
+        Hi,{% if user.is_authenticated %}
+        {{ user }}
+        {% else %}anonymous!
+        {% endif %}
+        <h2>{{ task.title }}</h2>
+        <p>{{ task.description }}</p>
+    </body>
+</html>
+

@@ -1,0 +1,14 @@
+<html>
+    <body>
+        Hi,{% if user.is_authenticated %}
+        {{ user }}
+        {% else %}anonymous!
+        {% endif %}
+        <ul>
+        {% for task in task_list %}
+        <li><a href="{% url track_task_details task.pk %}">{{ task.title }}</a> //{{ task.owner }}</li>
+        {% endfor %}
+        </ul>
+    </body>
+</html>
+

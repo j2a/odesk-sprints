@@ -92,6 +92,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.admin',
+    'basetrack.track',
 )
 
 #
@@ -99,6 +100,12 @@ INSTALLED_APPS = (
 #
 ODESK_PUBLIC_KEY = 'FILL IN LOCAL SETTINGS'
 ODESK_PRIVATE_KEY = 'FILL IN LOCAL SETTINGS'
+
+#
+# Settings for company/team for tasks
+#
+ODESK_TASK_COMPANY = 'odeskpsdev'
+ODESK_TASK_TEAM = 'odeskpsdev'
 
 #
 # Auth backend using oDesk auth and default User model
