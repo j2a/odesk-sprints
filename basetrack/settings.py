@@ -108,8 +108,8 @@ ODESK_PRIVATE_KEY = 'FILL IN LOCAL SETTINGS'
 #
 # Settings for company/team for tasks
 #
-ODESK_TASK_COMPANY = 'odeskpsdev'
-ODESK_TASK_TEAM = 'odeskpsdev'
+ODESK_TASK_COMPANY = 'FILL IN LOCAL SETTINGS'
+ODESK_TASK_TEAM = 'FILL IN LOCAL SETTINGS'
 
 #
 # Auth backend using oDesk auth and default User model
@@ -119,5 +119,5 @@ AUTHENTICATION_BACKENDS = (
     'django_odesk.auth.backends.ModelBackend',
 )
 
-ODESK_ADMINS = ('yyurevich@odesk.com',)
-ODESK_SUPERUSERS = ('yyurevich@odesk.com',)
+ODESK_ADMINS = ['FILL IN LOCAL SETTINGS']
+ODESK_SUPERUSERS = ['FILL IN LOCAL SETTINGS']

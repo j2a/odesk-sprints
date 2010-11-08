@@ -19,3 +19,12 @@ INSTALLED_APPS += (
 #
 ODESK_PUBLIC_KEY = 'FILL ME'
 ODESK_PRIVATE_KEY = 'FILL ME'
+
+#
+# Settings for company/team for tasks
+#
+ODESK_TASK_COMPANY = 'odeskpsdev'
+ODESK_TASK_TEAM = 'odeskpsdev'
+
+ODESK_ADMINS = ['yyurevich@odesk.com', 'solex@odesk.com']
+ODESK_SUPERUSERS = ['yyurevich@odesk.com', 'solex@odesk.com']
