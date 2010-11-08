@@ -1,6 +1,6 @@
 from django.db import models
 from django_odesk.task import abstract
-from workflows import utils
+from workflows import utils, models as workflows
 
 
 class TaskState(object):
@@ -19,7 +19,7 @@ class TaskState(object):
 class Task(abstract.BaseTask):
 
     description = models.TextField(null=True)
-    workflow = models.ForeignKey('workflows.Workflow')
+    workflow = models.ForeignKey(workflows.Workflow)
 
     state = TaskState()
 
@@ -41,3 +41,27 @@ class Task(abstract.BaseTask):
                                  "many possible transitions for %r" % self)
             transition = possible[0]
         utils.do_transition(self, transition, user)
+
+
+def update_odesk_task(sender, instance, created, **kwargs):
+    state = instance.state
+    obj = instance.content
+    actions = {
+        'Accepted': 'create_odesk_task',
+        'Closed': 'delete_odesk_task'}
+    # XXX: Weak. We make lock to some DB content: what if
+    # we will change Accepted to Assigned?
+    # Need to have some "state-related info", like
+    # http://bitbucket.org/diefenbach/django-lfc/src/f67eed8ab3f5/lfc/models.py#cl-56
+    # and rely on info in WorkflowStatesInformation instance. Like
+    # the owner of task, should we create or delete odesk task code, etc.
+    if state.name not in actions:
+        return
+    action_name = actions[state.name]
+    if hasattr(obj, action_name):
+        getattr(obj, action_name)()
+
+models.signals.post_save.connect(
+    update_odesk_task,
+    sender=workflows.StateObjectRelation,
+    dispatch_uid='basetrack.track.update_odesk_task')

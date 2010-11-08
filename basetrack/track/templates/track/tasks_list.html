@@ -5,8 +5,18 @@
         {% else %}anonymous!
         {% endif %}
         <ul>
-        {% for task in task_list %}
-        <li><a href="{% url track_task_details task.pk %}">{{ task.title }}</a> //{{ task.owner }}</li>
+        {% for group in grouped_task_list %}
+            <li><strong>{{ group.title }}</strong>
+                <ul>
+                    {% for task in group.task_list %}
+                    <li>
+                        <a href="{% url track_task_details task.pk %}">{{ task.pk }}: {{ task.title }}</a>
+                    </li>
+                    {% empty %}
+                        Nothing.
+                    {% endfor %}
+                </ul>
+            </li>
         {% endfor %}
         </ul>
     </body>

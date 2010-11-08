@@ -9,9 +9,16 @@ from basetrack.track import models
 
 def tasks_list(request):
     task_list = models.Task.objects.filter(owner=request.user)
+    states = set()
+    grouped = {}
+    for task in task_list:
+        states = states.union(set(task.workflow.states.all()))
+        grouped[task.state] = grouped.get(task.state, []) + [task]
+    grouped_list = [{'title': s.name, 'task_list': grouped.get(s, [])}
+                    for s in states]
     return render_to_response(
         'track/tasks_list.html',
-        {'task_list': task_list},
+        {'grouped_task_list': grouped_list},
         context_instance=RequestContext(request))
 
 
