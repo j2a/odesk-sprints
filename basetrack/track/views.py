@@ -24,6 +24,9 @@ def tasks_list(request):
 @login_required
 def task_details(request, task_id):
     task = models.Task.objects.get(pk=task_id)
+    if task.owner != request.user:
+        # XXX: Better to handle it through django-permissions
+        raise http.Http404
     slug = slugify(task.title)
     return http.HttpResponseRedirect(
         reverse('task_details_slug', args=[task_id, slug]))
@@ -31,6 +34,9 @@ def task_details(request, task_id):
 @login_required
 def task_details_slug(request, task_id, slug):
     task = models.Task.objects.get(pk=task_id)
+    if task.owner != request.user:
+        raise http.Http404
+
     task_slug = slugify(task.title)
     if task_slug != slug and request.method == 'GET':
         return http.HttpResponseRedirect(
