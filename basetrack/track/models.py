@@ -31,6 +31,12 @@ class Task(abstract.BaseTask):
     def do_transition(self, transition=None, user=None):
         if user is None:
             user = self.owner
+        if isinstance(transition, int):
+            try:
+                transition = workflows.Transition.objects.get(id=transition)
+            except workflows.Transition.DoesNotExist:
+                raise ValueError("There is no transition with id %s"
+                                 % transition)
         if transition is None:
             possible = self.state.get_allowed_transitions(self, user)
             if len(possible) == 0:

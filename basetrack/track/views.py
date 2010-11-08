@@ -6,7 +6,6 @@ from django import http
 from django.core.urlresolvers import reverse
 from basetrack.track import models
 
-
 def tasks_list(request):
     task_list = models.Task.objects.filter(owner=request.user)
     states = set()
@@ -32,10 +31,24 @@ def task_details(request, task_id):
 def task_details_slug(request, task_id, slug):
     task = models.Task.objects.get(pk=task_id)
     task_slug = slugify(task.title)
-    if task_slug != slug:
+    if task_slug != slug and request.method == 'GET':
         return http.HttpResponseRedirect(
             reverse('task_details_slug', args=[task_id, task_slug]))
+
+    error = None
+    if request.method == 'POST' and 'transition' in request.POST:
+        try:
+            transition = int(request.POST['transition'][0])
+        except (TypeError, IndexError, KeyError):
+            error = "Wrong transition parameter"
+        try:
+            task.do_transition(transition)
+        except ValueError, e:
+            error = "Transition failed: %s" % e
+        else:
+            return http.HttpResponseRedirect(
+                reverse('track_tasks_list'))
     return render_to_response(
         'track/task_details.html',
-        {'task': task},
+        {'task': task, 'error': error},
         context_instance=RequestContext(request))
