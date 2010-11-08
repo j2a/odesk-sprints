@@ -1,6 +1,7 @@
 from django.conf.urls.defaults import *
-
+from django.conf import settings
 from django.contrib import admin
+
 admin.autodiscover()
 
 
@@ -23,3 +24,11 @@ urlpatterns = patterns(
     url(r'^odesk-auth/', include('django_odesk.auth.urls')),
     url(r'^manage/', include(admin.site.urls)),
 )
+
+
+if settings.DEBUG:
+    urlpatterns += patterns(
+        '',
+        url(r'^assets/(.*)$', 'django.views.static.serve',
+            {'document_root': settings.MEDIA_ROOT}),
+    )

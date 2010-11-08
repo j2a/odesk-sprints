@@ -1,19 +1,19 @@
+{% extends "base.html" %}
 {% load task_action %}
-<html>
-    <body>
-        Hi,{% if user.is_authenticated %}
-        {{ user }}
-        {% else %}anonymous!
-        {% endif %}
-        <h2>{{ task.pk }}: {{ task.title }}</h2>
-        <h3>{{ task.state.name }}</h3>
-        {% if error %}
-        Err: {{ error }}
-        {% endif %}
-        <p>{{ task.description }}</p>
-        <form action='.' method="POST">
-        <p>{% task_action task %}
-        </form>
-    </body>
-</html>
 
+{% block breadcrumbs %}
+<div id="breadcrumbs">
+<a href="{% url track_tasks_list %}">Tasks list</a> &rsaquo; {{ task.pk }}: {{ task.title }}
+</div>
+{% endblock %}
+
+{% block content %} 
+<h2>{{ task.pk }}: {{ task.title }} ({{ task.state.name }})</h2>
+{% if error %}
+Err: {{ error }}
+{% endif %}
+<p>{{ task.description }}</p>
+<form action='.' method="POST">
+    <p>{% task_action task %}
+</form>
+{% endblock %}

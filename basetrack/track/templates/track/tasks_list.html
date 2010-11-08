@@ -1,9 +1,5 @@
-<html>
-    <body>
-        Hi,{% if user.is_authenticated %}
-        {{ user }}
-        {% else %}anonymous!
-        {% endif %}
+{% extends "base.html" %}
+{% block content %}
         <ul>
         {% for group in grouped_task_list %}
             <li><strong>{{ group.title }}</strong>
@@ -17,8 +13,9 @@
                     {% endfor %}
                 </ul>
             </li>
+        {% empty %}
+            No tasks at all.
         {% endfor %}
         </ul>
-    </body>
-</html>
 
+{% endblock %}
