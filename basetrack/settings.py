@@ -97,6 +97,8 @@ INSTALLED_APPS = (
     'basetrack.track',
 )
 
+LOGIN_URL = '/odesk-auth/authenticate/'
+
 #
 # oDesk API keys
 #

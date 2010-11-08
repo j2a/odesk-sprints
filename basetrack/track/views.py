@@ -6,6 +6,7 @@ from django import http
 from django.core.urlresolvers import reverse
 from basetrack.track import models
 
+@login_required
 def tasks_list(request):
     task_list = models.Task.objects.filter(owner=request.user)
     states = set()
@@ -20,14 +21,14 @@ def tasks_list(request):
         {'grouped_task_list': grouped_list},
         context_instance=RequestContext(request))
 
-
+@login_required
 def task_details(request, task_id):
     task = models.Task.objects.get(pk=task_id)
     slug = slugify(task.title)
     return http.HttpResponseRedirect(
         reverse('task_details_slug', args=[task_id, slug]))
 
-
+@login_required
 def task_details_slug(request, task_id, slug):
     task = models.Task.objects.get(pk=task_id)
     task_slug = slugify(task.title)
