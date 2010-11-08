@@ -1,0 +1,63 @@
+[
+  {
+    "pk": 1, 
+    "model": "workflows.workflow", 
+    "fields": {
+      "initial_state": 1, 
+      "name": "Simplest task workflow"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "workflows.state", 
+    "fields": {
+      "transitions": [
+        2
+      ], 
+      "name": "Accepted", 
+      "workflow": 1
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "workflows.state", 
+    "fields": {
+      "transitions": [], 
+      "name": "Closed", 
+      "workflow": 1
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "workflows.state", 
+    "fields": {
+      "transitions": [
+        1
+      ], 
+      "name": "New", 
+      "workflow": 1
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "workflows.transition", 
+    "fields": {
+      "permission": null, 
+      "destination": 2, 
+      "name": "Accept", 
+      "condition": "", 
+      "workflow": 1
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "workflows.transition", 
+    "fields": {
+      "permission": null, 
+      "destination": 3, 
+      "name": "Close", 
+      "condition": "", 
+      "workflow": 1
+    }
+  }
+]

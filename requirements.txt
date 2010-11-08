@@ -1,5 +1,7 @@
 Django==1.2.3
 django_extensions==0.5
--e git+http://github.com/jellycrystal/django-odesk.git#egg=django-odesk-0.0.1a1.0-py2.6
--e git+http://github.com/jellycrystal/python-odesk.git#egg=python-odesk-0.2.0a1.0-py2.6
+-e git+http://github.com/jellycrystal/django-odesk.git#egg=django-odesk-0.0.1a1.0
+-e git+http://github.com/jellycrystal/python-odesk.git#egg=python-odesk-0.2.0a1.0
+-e hg+http://bitbucket.org/diefenbach/django-workflows/#egg=django-workflows-1.0b4
+-e hg+http://bitbucket.org/diefenbach/django-permissions/#egg=django-permissions-1.0
 South==0.7.2

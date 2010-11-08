@@ -4,7 +4,7 @@ from tempfile import TemporaryFile
 import sys
 import shutil
 
-REQUIREMENTS = ['virtualenv', 'git']
+REQUIREMENTS = ['virtualenv', 'hg', 'git']
 
 def check_requirements():
     "Check requirements"

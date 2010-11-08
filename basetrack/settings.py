@@ -92,6 +92,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.admin',
+    'workflows',
+    'permissions',
     'basetrack.track',
 )
 
