@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load task_action %}
+
+{% block contentclass %}ticket{% endblock %}
+
+{% block breadcrumbs %}
+<div id="breadcrumbs">
+<a href="{% url track_tasks_list %}">Tasks list</a> &rsaquo; #{{ task.pk }}
+</div>
+{% endblock %}
+
+{% block content %} 
+<h1>Task #{{ task.pk }} <span class="status">({{ task.state.name }})</span></h1>
+{% if error %}
+<div class="system-message">
+<h2>Error</h2>
+{{ error }}
+</div>
+{% endif %}
+<div id="ticket">
+    <h2 class="summary searchable">{{ task.title }}</h2>
+    <div class="description">{{ task.description }}</div>
+</div>
+<form action='.' method="POST">
+    <p>{% task_action task %}
+</form>
+{% endblock %}

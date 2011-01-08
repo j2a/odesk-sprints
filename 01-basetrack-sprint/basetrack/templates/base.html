@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+<head>
+  <link href="/assets/css/style.css" media="screen" rel="stylesheet" type="text/css">
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />   
+  <title>Basetrack {% block title %}- {{ title }}{% endblock %}</title>
+
+</head>
+
+<body>
+    <div id="banner">
+        <div id="top_grad">
+            <div id="userinfo">
+                {{ user.get_full_name }}
+                {% if user.is_staff %}
+                | <a href="{% url admin:index %}">Manage</a>
+                {% endif %}
+            </div>
+        </div>
+        <div id="header">
+            <h1>Basetrack</h1>
+        </div>
+    </div>
+    <div id="main">
+        <div id="ctxtnav">
+            {% block breadcrumbs %}{% endblock %}
+        </div>
+        <div id="content" class="{% block contentclass %}report{% endblock %}">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+
+    <div id="footer">
+        <hr/>
+        <p>
+            <a href="http://pyobject.ru">Yurevich</a>.
+            <a href="http://odesk.com">oDesk</a>. 2010.
+        </p>
+    </div>
+        
+     
+     
+</body>
+</html>

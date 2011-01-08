@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+        <ul>
+        {% for group in grouped_task_list %}
+            <h2 class="report-result">{{ group.title }}</h2>
+            {% if group.task_list %}
+            <table class="listing tickets">
+                <thead>
+                    <tr>
+                        <th>Ticket</th><th>Title</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in group.task_list %}
+                    <tr class="color3-{% cycle "odd" "even" %}">
+                        <td class="ticket">
+                            <a href="{% url track_task_details task.id %}">#{{ task.id }}</a>
+                        </td>
+                        <td class="summary">
+                            <a href="{% url track_task_details task.id %}">{{ task.title }}</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>Nothing.</p>
+            {% endif %}
+            {% empty %}
+            <p>You have no any assigned tasks.</p>
+            {% endfor %}
+            
+{% endblock %}

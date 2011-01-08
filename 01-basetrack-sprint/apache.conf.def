@@ -1,0 +1,14 @@
+<VirtualHost *:80>
+        ServerName basetrack.odeskps.com
+        LoadModule wsgi_module modules/mod_wsgi.so
+        ErrorLog /var/log/httpd/basetrack_error_log
+
+        Alias /assets/ /var/www/basetrack-sprint/basetrack/assets/
+        <Directory /var/www/basetrack-sprint/basetrack/assets/>
+                Order deny,allow
+                Allow from all
+        </Directory>
+
+        WSGIScriptAlias / /var/www/basetrack-sprint/django.wsgi
+</VirtualHost>
+

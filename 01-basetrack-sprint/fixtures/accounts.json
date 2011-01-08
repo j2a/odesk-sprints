@@ -1,0 +1,38 @@
+[
+  {
+    "pk": 1, 
+    "model": "auth.user", 
+    "fields": {
+      "username": "yyurevich@odesk.com", 
+      "first_name": "Yuriy", 
+      "last_name": "Yurevich", 
+      "is_active": true, 
+      "is_superuser": true, 
+      "is_staff": true, 
+      "last_login": "2010-11-08 04:12:58", 
+      "groups": [], 
+      "user_permissions": [], 
+      "password": "$odesk-token$7f851a29510645fe5098df42f9e42c9d", 
+      "email": "yyurevich@odesk.com", 
+      "date_joined": "2010-11-08 04:12:58"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "auth.user", 
+    "fields": {
+      "username": "odeskpsdev@odesk.com", 
+      "first_name": "Odesk PS", 
+      "last_name": "Development", 
+      "is_active": true, 
+      "is_superuser": false, 
+      "is_staff": false, 
+      "last_login": "2010-11-08 04:13:12", 
+      "groups": [], 
+      "user_permissions": [], 
+      "password": "$odesk-token$0a7cd210e3ff4c29a8f5539c8787f0ac", 
+      "email": "odeskpsdev@odesk.com", 
+      "date_joined": "2010-11-08 04:13:11"
+    }
+  }
+]

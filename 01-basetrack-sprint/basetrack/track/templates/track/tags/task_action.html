@@ -1,0 +1,18 @@
+{% if next_transition %}
+    <input type="hidden" name="transition" value="{{ next_transition.id }}" />
+    <input type="submit" value="{{ next_transition.name }}" />
+{% else %}
+    {% if transitions %}
+    <select name="transition">
+        {% for transition in transitions %}
+            <option {% if transition.selected %}selected="selected"{% endif %}
+                    value="{{ transition.id }}">
+                {{ transition.name }}
+            </option>
+        {% endfor %}
+    </select>
+    <input type="submit" />
+    {% else %}
+    <!-- no any transition -->
+    {% endif %}
+{% endif %}
