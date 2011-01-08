@@ -1,0 +1,6 @@
+*pyc
+.installed.cfg
+creds.ini
+odesk-auth-proxy/bin
+odesk-auth-proxy/etc
+odesk-auth-proxy/var
